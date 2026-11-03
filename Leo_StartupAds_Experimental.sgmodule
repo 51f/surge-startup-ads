@@ -1,0 +1,23 @@
+#!name=Leo Startup Ads Blocker
+#!desc=Experimental startup ads blocking rules for Surge iOS
+#!author=51f
+#!category=Privacy
+
+[URL Rewrite]
+# 淘宝：疑似启动页广告接口
+^https?:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.taobao\.wireless\.home\.splash\.awesome\.get - reject-200
+
+# 京东：疑似启动页广告接口
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(start|queryMaterialAdverts) - reject-200
+
+# 拼多多：疑似启动页广告接口
+^https?:\/\/api\.(pinduoduo|yangkeduo)\.com\/api\/cappuccino\/splash - reject-200
+
+# 百度网盘：疑似广告接口
+^https?:\/\/pan\.baidu\.com\/rest\/2\.0\/pcs\/ad - reject-200
+
+# 哔哩哔哩：疑似开屏广告接口
+^https?:\/\/app\.bili(bili\.com|api\.net)\/x\/v2\/splash\/(list|show)(?:\?|$) - reject-200
+
+[MITM]
+hostname = %APPEND% guide-acs.m.taobao.com, api.m.jd.com, api.pinduoduo.com, api.yangkeduo.com, pan.baidu.com, app.bilibili.com, app.biliapi.net
